@@ -2,7 +2,7 @@
  * @Author: Antony vic19910108@gmail.com
  * @Date: 2022-11-08 15:02:13
  * @LastEditors: Antony vic19910108@gmail.com
- * @LastEditTime: 2022-11-08 20:43:47
+ * @LastEditTime: 2022-11-09 15:08:38
  * @FilePath: /flutter_clone_bilibili/lib/provider/home_recommend_provider.dart
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -11,11 +11,25 @@ import 'package:flutter_clone_bilibili/common/constant/constant.dart';
 import 'package:flutter_clone_bilibili/common/service/address.dart';
 import 'package:flutter_clone_bilibili/common/service/dio.dart';
 import 'package:flutter_clone_bilibili/common/util/crypto_util.dart';
+import 'package:flutter_clone_bilibili/model/BangumiModel.dart';
 import 'package:flutter_clone_bilibili/model/FeedIndexModel.dart';
 
-class HomeRecommendProvider extends ChangeNotifier {
+class HomeProvider extends ChangeNotifier {
   /// 推荐首页视频列表
   List<FeedIndexItem> feedIndexItemList = [];
+
+  /// 动画列表数据
+  List<Module> animeModuleList = [];
+
+  /// 获取动画列表数据
+  Future initAnimeModuleList() async {
+    final result = await httpManager.request(Address.animeDataUrl);
+    HYGrcPageBangumiModel bangumiModel =
+        HYGrcPageBangumiModel.fromJson(result['result']);
+    animeModuleList = bangumiModel.modules;
+    notifyListeners();
+    return animeModuleList;
+  }
 
   /// 获取推荐首页视频列表
   Future initVideoList() async {
@@ -24,6 +38,17 @@ class HomeRecommendProvider extends ChangeNotifier {
         "${Address.feedIndexDataUrl}?${CryptoUtil.serializationParams(params)}");
     HYFeedIndexModel data = HYFeedIndexModel.fromJson(result);
     feedIndexItemList = data.data.items;
+    notifyListeners();
+    return feedIndexItemList;
+  }
+
+  /// 加载更多推荐首页视频列表
+  Future loadVideoList() async {
+    Map<String, dynamic> params = fetchFeedIndexParamsWithSign();
+    final result = await httpManager.request(
+        "${Address.feedIndexDataUrl}?${CryptoUtil.serializationParams(params)}");
+    HYFeedIndexModel data = HYFeedIndexModel.fromJson(result);
+    feedIndexItemList.addAll(data.data.items);
     notifyListeners();
     return feedIndexItemList;
   }

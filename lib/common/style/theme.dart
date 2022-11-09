@@ -2,7 +2,7 @@
  * @Author: Antony vic19910108@gmail.com
  * @Date: 2022-11-07 22:58:00
  * @LastEditors: Antony vic19910108@gmail.com
- * @LastEditTime: 2022-11-08 11:25:06
+ * @LastEditTime: 2022-11-09 22:50:28
  * @FilePath: /flutter_clone_bilibili/lib/common/style/theme.dart
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -50,4 +50,10 @@ class GlobalTheme {
   static const Color norPink06Colors = Color.fromRGBO(236, 114, 153, 1);
   static const Color norPink07Colors = Color.fromRGBO(226, 134, 159, 1);
   static const Color norPink08Colors = Color.fromRGBO(217, 121, 151, 1);
+
+  static Color hexColor(String webColor) {
+    /// 将 #dc380d 值转换为 -> dc380d
+    String colorString = webColor.substring(1);
+    return Color(int.parse(colorString, radix: 16)).withAlpha(255);
+  }
 }
