@@ -2,7 +2,7 @@
  * @Author: Antony vic19910108@gmail.com
  * @Date: 2022-11-08 12:57:23
  * @LastEditors: Antony vic19910108@gmail.com
- * @LastEditTime: 2022-11-09 14:55:00
+ * @LastEditTime: 2022-11-10 16:55:10
  * @FilePath: /flutter_clone_bilibili/lib/page/home/recommend/home_recommend_page.dart
  * @Description: 首页推荐
  */
@@ -117,7 +117,6 @@ class _HomeRecommendPageState extends State<HomeRecommendPage>
       //     ),
       //   );
       // }
-      print("lengt=======${feedIndexVM.feedIndexItemList.length}");
       if (recommendWidgets.isEmpty) {
         if (feedIndexVM.feedIndexItemList.length == 10) {
           recommendWidgets.add(_buildVideoList(feedIndexVM.feedIndexItemList));

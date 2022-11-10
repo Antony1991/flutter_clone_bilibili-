@@ -2,7 +2,7 @@
  * @Author: Antony vic19910108@gmail.com
  * @Date: 2022-11-09 18:18:19
  * @LastEditors: Antony vic19910108@gmail.com
- * @LastEditTime: 2022-11-09 23:08:15
+ * @LastEditTime: 2022-11-10 09:17:24
  * @FilePath: /flutter_clone_bilibili/lib/page/home/anime/anime_item.dart
  * @Description: 动画gridItem
  */
@@ -62,7 +62,7 @@ class _AnimeItemState extends State<AnimeItem> {
       left: 0,
       right: 0,
       child: Container(
-        height: 40.h,
+        height: 20.h,
         alignment: Alignment.center,
         decoration: BoxDecoration(
             gradient: LinearGradient(colors: [
@@ -78,7 +78,6 @@ class _AnimeItemState extends State<AnimeItem> {
   /// 渲染上面遮罩
   Widget _buildCoverTopMask() {
     if (widget.animeItem.badgeInfo != null) {
-      print("颜色======${widget.animeItem.badgeInfo!.bgColor}");
       return Positioned(
           top: 10.h,
           right: 0.h,

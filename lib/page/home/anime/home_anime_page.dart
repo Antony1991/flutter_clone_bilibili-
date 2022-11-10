@@ -2,7 +2,7 @@
  * @Author: Antony vic19910108@gmail.com
  * @Date: 2022-11-09 13:57:07
  * @LastEditors: Antony vic19910108@gmail.com
- * @LastEditTime: 2022-11-09 23:09:48
+ * @LastEditTime: 2022-11-10 16:54:56
  * @FilePath: /flutter_clone_bilibili/lib/page/home/anime/home_anime_page.dart
  * @Description: 动漫
  */
@@ -13,6 +13,7 @@ import 'package:flutter_clone_bilibili/common/style/icons.dart';
 import 'package:flutter_clone_bilibili/common/style/theme.dart';
 import 'package:flutter_clone_bilibili/model/BangumiModel.dart';
 import 'package:flutter_clone_bilibili/page/home/anime/anime_item.dart';
+import 'package:flutter_clone_bilibili/page/home/anime/bangumi_rank_zone.dart';
 import 'package:flutter_clone_bilibili/page/home/widgets/home_pagination.dart';
 import 'package:flutter_clone_bilibili/provider/home_provider.dart';
 import 'package:flutter_clone_bilibili/widgets/bili_classical_header.dart';
@@ -51,7 +52,7 @@ class _HomeAnimePageState extends State<HomeAnimePage>
     }
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10).r,
-      height: 240.h,
+      height: 180.h,
       child: Swiper(
         controller: _swiperController,
         itemCount: modules[0].items.length,
@@ -131,26 +132,27 @@ class _HomeAnimePageState extends State<HomeAnimePage>
     if (items.isEmpty) {
       return const SizedBox();
     }
-    return CustomScrollView(
-      controller: _customScrollController,
-      physics: const NeverScrollableScrollPhysics(),
-      shrinkWrap: true,
-      slivers: [
-        SliverGrid(
-            delegate: SliverChildBuilderDelegate((context, index) {
-              return AnimeItem(items[index]);
-            }, childCount: items.length),
-            gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                mainAxisExtent: 200.h, maxCrossAxisExtent: 180.w))
-      ],
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 10).r,
+      child: CustomScrollView(
+        controller: _customScrollController,
+        physics: const NeverScrollableScrollPhysics(),
+        shrinkWrap: true,
+        slivers: [
+          SliverGrid(
+              delegate: SliverChildBuilderDelegate((context, index) {
+                return AnimeItem(items[index]);
+              }, childCount: items.length),
+              gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                  mainAxisExtent: 200.h, maxCrossAxisExtent: 180.w))
+        ],
+      ),
     );
   }
 
-  getGridModules(List<Module> modules) {
+  getGridModules(List<Module> modules, int start, int end) {
     List<Module> items = [];
-    print("lens-----#########${modules.length}");
-    items.addAll(modules.getRange(2, 3));
-    print("items======${items.length}");
+    items.addAll(modules.getRange(start, end));
     return items;
   }
 
@@ -176,7 +178,27 @@ class _HomeAnimePageState extends State<HomeAnimePage>
               child: 10.verticalSpace,
             ),
             SliverToBoxAdapter(
-                child: _buildGridView(getGridModules(vMdata.animeModuleList))),
+                child: _buildGridView(
+                    getGridModules(vMdata.animeModuleList, 2, 3))),
+            SliverToBoxAdapter(
+              child: 20.verticalSpace,
+            ),
+            SliverToBoxAdapter(
+                child: BangumiRankZone(
+              modules: vMdata.animeModuleList,
+              zoneNum: 7,
+            )),
+            SliverToBoxAdapter(
+                child: _buildGridView(
+                    getGridModules(vMdata.animeModuleList, 4, 7))),
+            SliverToBoxAdapter(
+              child: 20.verticalSpace,
+            ),
+            SliverToBoxAdapter(
+                child: BangumiRankZone(
+              modules: vMdata.animeModuleList,
+              zoneNum: 7,
+            ))
           ],
         ),
       );
