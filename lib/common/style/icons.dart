@@ -2,7 +2,7 @@
  * @Author: Antony vic19910108@gmail.com
  * @Date: 2022-11-07 21:38:12
  * @LastEditors: Antony vic19910108@gmail.com
- * @LastEditTime: 2022-11-14 20:05:39
+ * @LastEditTime: 2022-11-15 20:20:45
  * @FilePath: /flutter_clone_bilibili/lib/common/style/icons.dart
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -34,8 +34,9 @@ class GlobalIcons {
   static const videoRePlay = 'assets/image/icon/video_replay.png';
   static const videoCanPlay = 'assets/image/icon/bili_player_play_can_play.png';
   static const videoCanPause =
-      'assets/image/icon/bili_player_play_can_pause.png.png';
+      'assets/image/icon/bili_player_play_can_pause.png';
   static const videoProgress = 'assets/image/icon/progress_bar.png';
+  static const videoFullScreen = "assets/image/icon/full_custom.png";
 
   /// loading图片
   static const holderLoading = 'assets/image/icon/holder_loading.png';

@@ -2,7 +2,7 @@
  * @Author: Antony vic19910108@gmail.com
  * @Date: 2022-11-14 19:24:37
  * @LastEditors: Antony vic19910108@gmail.com
- * @LastEditTime: 2022-11-14 22:38:25
+ * @LastEditTime: 2022-11-15 13:31:34
  * @FilePath: /flutter_clone_bilibili/lib/widgets/video/video_progress.dart
  * @Description: 视频播放的进度条
  */
@@ -42,7 +42,7 @@ class VideoProgress extends StatefulWidget {
 
 class _VideoProgressState extends State<VideoProgress> {
   /// 进度条图片
-  Image? image;
+  ui.Image? image;
   bool _controllerWasPlaying = false;
 
   VideoPlayerController get controller => widget.controller;
@@ -61,7 +61,7 @@ class _VideoProgressState extends State<VideoProgress> {
     final bytes = data.buffer.asUint8List();
     // 解析uint8list
     final image = await decodeImageFromList(bytes);
-    this.image = image as Image?;
+    this.image = image;
     return image;
   }
 
@@ -124,7 +124,6 @@ class _VideoProgressState extends State<VideoProgress> {
         /// 加载进度条顶部的图片
         future: loadAssetImage(GlobalIcons.videoProgress),
         builder: (context, snapshot) {
-          print("start=========${snapshot.data}");
           return snapshot.data != null
               ? Center(
                   child: Container(
@@ -222,7 +221,7 @@ class _ProgressBarPaint extends CustomPainter {
 
     canvas.drawImage(
         assetsImage,
-        Offset(playedPart - barHeight * 2, baseOffset - barHeight),
+        Offset(playedPart - barHeight * 2, baseOffset - barHeight - 2),
         colors.handlePaint);
   }
 }
