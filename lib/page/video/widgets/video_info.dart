@@ -2,12 +2,14 @@
  * @Author: Antony vic19910108@gmail.com
  * @Date: 2022-11-17 21:53:26
  * @LastEditors: Antony vic19910108@gmail.com
- * @LastEditTime: 2022-11-17 22:15:47
+ * @LastEditTime: 2022-11-18 20:04:00
  * @FilePath: /flutter_clone_bilibili/lib/page/video/widgets/video_info.dart
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 import 'package:flutter/material.dart';
+import 'package:flutter_clone_bilibili/common/style/icons.dart';
 import 'package:flutter_clone_bilibili/common/style/theme.dart';
+import 'package:flutter_clone_bilibili/widgets/bili_avatar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class VideoInfo extends StatelessWidget {
@@ -18,7 +20,7 @@ class VideoInfo extends StatelessWidget {
   Widget _buildOwnerInfo() {
     return Row(
       children: [
-        // BiliAvatar(videoModel.owner.face),
+        const BiliAvatar(GlobalIcons.videoPlaceHolderDefault),
         Expanded(
             flex: 1,
             child: Container(

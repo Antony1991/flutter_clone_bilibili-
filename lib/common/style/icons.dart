@@ -2,7 +2,7 @@
  * @Author: Antony vic19910108@gmail.com
  * @Date: 2022-11-07 21:38:12
  * @LastEditors: Antony vic19910108@gmail.com
- * @LastEditTime: 2022-11-15 20:20:45
+ * @LastEditTime: 2022-11-18 21:02:51
  * @FilePath: /flutter_clone_bilibili/lib/common/style/icons.dart
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -40,4 +40,11 @@ class GlobalIcons {
 
   /// loading图片
   static const holderLoading = 'assets/image/icon/holder_loading.png';
+
+  /// 图片
+  static const icArrowUp = 'assets/image/icon/ic_arrow_up.png';
+  static const icArrowDown = 'assets/image/icon/ic_arrow_down.png';
+
+  static const playCustom02 = 'assets/image/icon/play_custom02.png';
+  static const remarkCustom02 = 'assets/image/icon/remark_custom02.png';
 }
