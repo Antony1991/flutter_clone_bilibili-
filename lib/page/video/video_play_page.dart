@@ -2,7 +2,7 @@
  * @Author: Antony vic19910108@gmail.com
  * @Date: 2022-11-10 18:11:01
  * @LastEditors: Antony vic19910108@gmail.com
- * @LastEditTime: 2022-11-17 22:12:04
+ * @LastEditTime: 2022-11-20 16:10:18
  * @FilePath: /flutter_clone_bilibili/lib/page/video_play/video/video_play_page.dart
  * @Description: 视频播放页面
  */
@@ -10,19 +10,38 @@ import 'package:chewie/chewie.dart';
 import 'package:easy_refresh/easy_refresh.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_clone_bilibili/common/style/theme.dart';
+import 'package:flutter_clone_bilibili/model/FeedIndexModel.dart';
 import 'package:flutter_clone_bilibili/page/video/video_profile/video_profile_page.dart';
 import 'package:flutter_clone_bilibili/widgets/video/bili_controls.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:video_player/video_player.dart';
 
-class VideoPlayPage extends StatefulWidget {
-  const VideoPlayPage({super.key});
+class VideoPlayPage extends StatelessWidget {
+  const VideoPlayPage({Key? key}) : super(key: key);
 
   @override
-  State<VideoPlayPage> createState() => _VideoPlayPageState();
+  Widget build(BuildContext context) {
+    double aspectRatio = MediaQuery.of(context).size.aspectRatio;
+    FeedIndexItem videoData =
+        ModalRoute.of(context)?.settings.arguments as FeedIndexItem;
+    return SafeArea(
+        child:
+            VideoPlayContent(videoData: videoData, aspectRatio: aspectRatio));
+  }
 }
 
-class _VideoPlayPageState extends State<VideoPlayPage>
+class VideoPlayContent extends StatefulWidget {
+  final FeedIndexItem videoData;
+  final double aspectRatio;
+  const VideoPlayContent(
+      {required this.videoData, required this.aspectRatio, Key? key})
+      : super(key: key);
+
+  @override
+  State<VideoPlayContent> createState() => _VideoPlayContentState();
+}
+
+class _VideoPlayContentState extends State<VideoPlayContent>
     with AutomaticKeepAliveClientMixin {
   ChewieController? _chewieController;
   late VideoPlayerController _playerController;
@@ -90,7 +109,7 @@ class _VideoPlayPageState extends State<VideoPlayPage>
   }
 
   Widget _buildInfo() {
-    return const VideoProfilePage();
+    return VideoProfilePage(widget.videoData);
   }
 
   Widget _buildComment() {
@@ -104,14 +123,13 @@ class _VideoPlayPageState extends State<VideoPlayPage>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    return SafeArea(
-        child: DefaultTabController(
-            length: 2,
-            child: Scaffold(
-                body: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [_buildVideoPlayer(), _buildContentView()],
-            ))));
+    return DefaultTabController(
+        length: 2,
+        child: Scaffold(
+            body: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [_buildVideoPlayer(), _buildContentView()],
+        )));
   }
 
   @override

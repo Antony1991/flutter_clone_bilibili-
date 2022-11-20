@@ -2,7 +2,7 @@
  * @Author: Antony vic19910108@gmail.com
  * @Date: 2022-11-07 21:38:12
  * @LastEditors: Antony vic19910108@gmail.com
- * @LastEditTime: 2022-11-18 21:02:51
+ * @LastEditTime: 2022-11-20 20:41:39
  * @FilePath: /flutter_clone_bilibili/lib/common/style/icons.dart
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -47,4 +47,35 @@ class GlobalIcons {
 
   static const playCustom02 = 'assets/image/icon/play_custom02.png';
   static const remarkCustom02 = 'assets/image/icon/remark_custom02.png';
+
+  /// mine
+  static const mineConnect = 'assets/image/icon/bilibili_connect.png';
+  static const mineScan = 'assets/image/icon/scan.png';
+  static const mineDarkModel = 'assets/image/icon/dark_model.png';
+  static const mineStaffMore = 'assets/image/icon/ic_staff_group_more.png';
+
+  /// mine 图标
+  static const mineOfflineCache = 'assets/image/icon/offline_cache.png';
+  static const mineHistory = 'assets/image/icon/history_record.png';
+  static const mineFavor = 'assets/image/icon/my_favor.png';
+  static const mineWatch = 'assets/image/icon/next_time_watch.png';
+
+  static const mineMyClass = 'assets/image/icon/my_class.png';
+  static const mineFreeFlow = 'assets/image/icon/free_flow_service.png';
+  static const mineClothes = 'assets/image/icon/sexy_clothes.png';
+  static const mineMyWalt = 'assets/image/icon/my_walt.png';
+
+  static const mineMyVip = 'assets/image/icon/vip_selected.png';
+  static const mineAward = 'assets/image/icon/recommand_award.png';
+  static const mineTalkCenter = 'assets/image/icon/talk_center.png';
+  static const mineBenefit = 'assets/image/icon/bilibili_benefit.png';
+
+  static const mineEletric = 'assets/image/icon/eletric_benefit.png';
+  static const mineGas = 'assets/image/icon/gas_station.png';
+  static const mineRedPack = 'assets/image/icon/red_package.png';
+  static const mineGameCenter = 'assets/image/icon/game_center.png';
+
+  static const mineCustom = 'assets/image/icon/Contact_service.png';
+  static const mineTeensMode = 'assets/image/icon/teens_mode.png';
+  static const mineSettings = 'assets/image/icon/settings.png';
 }

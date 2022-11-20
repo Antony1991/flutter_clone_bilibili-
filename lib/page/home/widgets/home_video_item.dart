@@ -2,7 +2,7 @@
  * @Author: Antony vic19910108@gmail.com
  * @Date: 2022-11-08 13:32:41
  * @LastEditors: Antony vic19910108@gmail.com
- * @LastEditTime: 2022-11-08 23:03:26
+ * @LastEditTime: 2022-11-20 15:13:38
  * @FilePath: /flutter_clone_bilibili/lib/page/home/widgets/home_video_item.dart
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -10,6 +10,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_clone_bilibili/common/style/icons.dart';
 import 'package:flutter_clone_bilibili/common/style/theme.dart';
 import 'package:flutter_clone_bilibili/model/FeedIndexModel.dart';
+import 'package:flutter_clone_bilibili/router/home_router.dart';
+import 'package:flutter_clone_bilibili/router/navigator_util.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HomeVideoItem extends StatefulWidget {
@@ -264,18 +266,41 @@ class _HomeVideoItemState extends State<HomeVideoItem> {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: Column(
-        children: [
-          _buildCover(),
-          SizedBox(
-            height: 70.h,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [_buildTitle(), _buildCoverFooter()],
-            ),
-          )
-        ],
+    return GestureDetector(
+      onTap: () {
+        print("a======");
+        if (widget.feedIndexItem.goto == 'av') {
+          FeedIndexItem videoItem = widget.feedIndexItem;
+          NavigatorUtil.pushNamed(context, HomeRouters.video, videoItem);
+          // httpManager
+          //     .request(
+          //         "${Address.mp4VideoUrl}${videoItem.args!.aid!}.html?from=search")
+          //     .then((value) {
+          //   /// 匹配字符串readyVideoUrl: 到readyDuration之间的字符串
+          //   RegExp exp =
+          //       RegExp(r'(?<=(readyVideoUrl: ))[\s\S]*?(?=(readyDuration))');
+          //   print("exp.allMatches(value)---${exp.stringMatch(value)}");
+          //   String videoMp4 = exp.stringMatch(value) ?? "";
+          //   if (videoMp4.isNotEmpty) {
+          //     videoItem.videoData = videoMp4.substring(1, videoMp4.length - 1);
+          //     NavigatorUtil.pushNamed(context, HomeRouters.video, videoItem);
+          //   }
+          // });
+        }
+      },
+      child: Card(
+        child: Column(
+          children: [
+            _buildCover(),
+            SizedBox(
+              height: 70.h,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [_buildTitle(), _buildCoverFooter()],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
